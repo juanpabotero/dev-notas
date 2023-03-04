@@ -94,6 +94,14 @@ que piden donaciones y el *--no-audit* es para que no muestre los mensajes
 de paquetes que piden auditar, ambos se usan para hacer una pequeña
 optimizacion que puede ahorrar unos segundos en las instalaciones.
 
+En los scripts puedo poner un comando para pasar el linter por todos los archivos, 
+`"lint": "eslint . --fix"`
+
+**peerDependencies** significa que no lo vamos a instalar nosotros, sino que vamos 
+a depender de que el proyecto donde lo vamos a utilizar ya tenga instalada esa utilidad.  
+El paquete necesita una dependencia de produccion que debe ser instalada por el usuario.  
+
+
 
 ### Babel: 
 
@@ -285,6 +293,23 @@ Para un proyecto en el que use React debo poner, no lo de arriba:
 	"extends": "./node_modules/standard/eslintrc.json"
 }
 ```  
+
+Para instalar eslint en un proyecto que use TypeScript seria mejor 
+hacerlo asi:  
+`npx eslint --init`  
+
+How would you like to use ESLint? · style
+What type of modules does your project use? · esm
+Which framework does your project use? · react
+Does your project use TypeScript? » Yes
+Where does your code run? · browser
+How would you like to define a style for your project? · popular guide
+Which style guide do you want to follow? · standard-with-typescript
+What format do you want your config file to be in? · JavaScript
+Would you like to install them now? · Yes
+Which package manager do you want to use? · npm
+
+en el archivo .eslintrc.cjs, en "parserOptions", agregar: `"project": "./tsconfig.json"` 
 
 ### Prettier:  
 

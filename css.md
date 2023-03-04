@@ -256,14 +256,12 @@
 - Crear un menu responsive:  
   Ver curso-react-midudev/06-shopping-cart/components/Cart.css y Cart.jsx  
 
-
 ---
 
 ## Colores
 
 - rgb, a parte de escribirlo de 0 a 255, lo puedo esrcibir en porcentajes:  
 	`rgb(100%, 50%, 100%);`
-
 
 ---
 
@@ -290,7 +288,78 @@
 
 ---
 
-# Otros
+## Metodología BEM  
+
+BEM significa Bloque, Elemento, Modificador.  
+
+Un bloque es un contenedor donde se encontrarán los diferentes elementos. El bloque 
+corresponde a la raíz de la clase y deberá ir siempre primero. Cuando ya está definido 
+es posible nombrar los elementos que compondrán la estructura final y su contenido.  
+Algunas restricciones a la hora de nombrar un bloque:  
+No puedes usar mayúsculas. No puedes usar dos guiones bajos seguidos, porque está 
+reservado para los elementos. Y tampoco puedes usar dos guiones seguidos, porque 
+está reservado para los modificadores.  
+
+Un elemento es una de las piezas que compondrán la estructura de un bloque.  
+
+Un modificador sirve para modificar algunas propiedades de un bloque o elemento.  
+
+Para atacar los estilos del bloque en CSS, tienes que utilizar solo el selector de 
+clase con el nombre del bloque.
+
+Ejemplo:  
+
+```html
+<!-- EJEMPLO 1 -->
+<div class="block">
+    <div class="block__element">Elem 1</div>
+    <div class="block__element">Elem 2</div>
+    <div class="block__element block__element--modifier">Elem 3</div>
+</div>
+<!-- EJEMPLO 2 -->
+<div class="item item--modifier">
+    <div class="item__element">Elem 1</div>
+    <div class="item__element">
+        <div class="item__another-element">Elem 2</div>
+        <div class="item__another-element">Elem 3</div>
+    </div>
+    <div class="item__element item__element--modifier">Elem 4</div>
+</div>
+```  
+Los estilos usando un preprocesador de css:  
+```css
+// EJEMPLO 1
+.block{ 
+    color: inherit;
+    &__element{
+        color: inherit;
+        &--modifier{ 
+            color: inherit;
+        }
+    }
+}
+// EJEMPLO 2
+.item{ 
+    color: inherit;
+    &--modifier{
+        color: inherit;
+    }
+    &__element{
+        color: inherit;
+        &--modifier{
+            color: inherit;
+        }
+    }
+    &__another-element{
+        color: inherit;
+    }
+}
+```  
+
+
+---
+
+## Otros
 
 - Medidas
 	- **rem**: es una medida relativa, relativa al root o el html, 

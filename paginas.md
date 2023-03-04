@@ -453,6 +453,7 @@ Para buscar cualquier libreria con vanilla javascript:
   vea bien la página.  
   [watercss.kognise.dev](https://watercss.kognise.dev/)  
   [boltcss.com](https://boltcss.com/)  
+  [simplecss.org](https://simplecss.org/)  
 
 
 ## Librerías CSS:
@@ -753,8 +754,10 @@ Para buscar cualquier libreria con vanilla javascript:
 - [gitexplorer.com](https://gitexplorer.com/)  
   cheatsheet para GIT
 
-- [mongodb.com/atlas/database](https://www.mongodb.com/atlas/database) (midu)   
-  Base de datos
+- Bases de datos  
+  [mongodb.com/atlas/database](https://www.mongodb.com/atlas/database) (midu)   
+  https://jsonbin.io/ para guardar jsons.  
+
 
 - [lucia-auth.vercel.app](https://lucia-auth.vercel.app/) (midu)  
   Servicio de Autenticacion

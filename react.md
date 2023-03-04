@@ -14,24 +14,76 @@ Extensiones de VSCode:
 
 ## Librerías
 
-- Fetching de datos:  
-  [tanstack.com/query/latest](https://tanstack.com/query/latest)  
+- Crear proyecto  
+  Client Side: Vite  
+  SSR: Next.js  
+  Static: Astro  
 
-- Hook de formularios:  
-  [react-hook-form.com](https://react-hook-form.com)  
+- Package Manager  
+  Por defecto: npm  
+  Por cambiar o por probar: pnpm  
+
+- State Management  
+  Cosas estáticas o que cambian poco: React Context  
+  Para estado global general: Zustand  
+  Redux Toolkit SÓLO para proyectos medio/grandecitos con estados globales complejos  
+  Para proyectos GRANDES, evitar el estado global y depender de React Query, Apollo, Flux...  
+
+- Data Fetching  
+  https://tanstack.com/query/latest  
+  urlQL  
+
+- Routing  
+  NextJS File System Routing  
+  React Router (para proyectos con paths complejos o muchas páginass)  
+  Wouter (smaller alternative, páginas sencillas)  
+
+- CSS Styling  
+  TailwindCSS  
+  CSS Modules  
+  Vanilla Extract  
+
+- React UI Libraries  
+  Framer Motion  
+  Auto Animate  
+
+- Charts  
+  Recharts  
+
+- Forms  
+  https://react-hook-form.com/  
+  zod (para validaciones)  
+
+- Autenticación  
+  Supabase Auth  
+  Next Auth  
+  O probar Lucia Auth/Authjs.dev  
+
+- Hosting  
+
+  Proyectos web:  
+  Vercel  
+  Netlify  
+
+  Proyectos web + Workers (Edge Functions):  
+  Especial mención: Cloudflare  
+
+  Dockerfiles:  
+  Railway  
+  Fly.io  
+  Render  
+
+- Testing  
+  Vitest + Playwright + React Testing Library  
+
+- Time in React  
+  Menos momentjs lo que quieras.  
+  date-fns  
+  dayjs  
+  luxon  
 
 - Componentes:  
   [mui.com](https://mui.com/)  
-
-- Estado global:  
-  [redux.js.org](https://redux.js.org)  
-  [Zustand](https://www.npmjs.com/package/zustand)  
-
-- Rutas - Navegación:  
-  [reactrouter.com](https://reactrouter.com)  
-
-- Testing:  
-  [testing-library.com/docs/react-testing-library/intro](https://testing-library.com/docs/react-testing-library/intro)  
 
 - Iconos:  
   [react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons/)  

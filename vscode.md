@@ -209,11 +209,12 @@
   Markdown: open preview para ver la previsualizacion del archivo
 
 
-- cambiar el nombre de la variable, clase, metodo, etc, solo en su
-  definicion y referencia, dejo el cursor en la palabra, doy F2 y
+- Cambiar el nombre de la variable, clase, metodo, etc, solo en su
+  definicion y referencia, de manera estricta, diferenciando entre 
+  mayusculas y minusculas  dejo el puntero en la palabra, doy F2 y
   pongo el nuevo nombre.  
   Esto es distinto a usar el buscar y reemplazar porque esto cambiaria
-  cada coincidencia en el archivo o en el proyecto
+  cada coincidencia en el archivo o en el proyecto.  
 
 
 - SNIPPETS:  

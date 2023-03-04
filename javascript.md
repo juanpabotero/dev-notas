@@ -299,6 +299,22 @@
 
 ## Tips y trucos
 
+- Obtener url actual:
+  ```javascript
+  window.location.href
+  ```
+
+- Obtener el path de la url:
+  ```javascript
+  window.location.pathname
+  ```
+
+- Obtener parametros de la url:
+  ```javascript
+  const urlParams = new URLSearchParams(window.location.search)
+  const id = urlParams.get('id')
+  ```
+
 - Recuperar los datos de un formulario en un objeto:
   ```javascript
   document.querySelector('form').addEventListener('submit', e => {
