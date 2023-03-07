@@ -413,8 +413,17 @@ Si quiero usar las variables como selectores, se debe interpolar:
 en un archivo SASS que referencie a esos archivos, para definir un archivo 
 partial se pone un _ al inicio.  
 Para usar el partial en un archivo principal se usa: `@use 'nombrePartial';`. Sin poner el _  
+Puedo poner un alias al partial: `@use 'nombrePartial' as nombreAlias;`  
 Para usar una variable del archivo partial se hace referencia al nombre del 
 partial y después el nombre de la variable: `color: nombrePartial.$nombreVariable`  
+
+Puedo crear un archivo _index.scss dentro de una carpeta para exportar los demás 
+archivos de esa carpeta, y luego importarlos desde un solo lugar.  
+En el archivo _index.scss: `@forward 'nombreArchivo';`  
+Para usarlo en otro archivo: `@use 'nombreCarpeta';`, y por defecto mirará el 
+archivo _index.scss.  
+Para usar una variable de uno de los archivos partials: 
+`color: nombreCarpeta.$nombreVariable;`
 
 Cuando se hace **nesting**, se usa el & para hacer referencia al elemento padre:  
 ```css
