@@ -156,26 +156,6 @@
 - Un `width` recomendado para usar en los media queries es 40rem (640px).
 
 
-- El comportamiento por defecto de `flex` es crear una fila, por lo que sus hijos  
-  seran columnas.  
-	El comportamiento por defecto de `grid` es crear una columna, por lo que sus  
-	hijos seran filas. Para crear columnas, puedo usar la propiedad  
-	`grid-auto-flow: column;`.
-
-
-- `flex` es el diminutivo de las propiedades `flex-grow, flex-shrink y flex-basis` y sus  
-  valores por defecto son 0 1 auto, respectivamente.
-	Cuando se usa `flex: 1` los valores son 1 1 0%, lo que hace que el elemento ponga su  
-	`width: min-content` pero despues se expande hasta ocupar todo el espacio disponible.  
-	`flex-basis: 100%` hace que el elemento tenga el tamaño de su content width, pero  
-	se expande hasta ocupar todo el espacio disponible.  
-	`flex-flow` es el diminutivo de las propiedades `flex-direction y flex-wrap` y sus 
-	valores por defecto son row nowrap, respectivamente.
-
-
-- Una vez `flex-wrap: wrap` se activa (por defecto es nowrap), align-content funciona.
-
-
 - Poner espaciado entre elementos de un container flex:  
 	```css
 	.container{
@@ -285,6 +265,204 @@
 		mix-blend-mode: color-burn;
 	}
 	```
+
+
+---
+
+## GRID  
+
+Cuando defino el contenedor como grid, los hijos serán grid-items y dejarán 
+de tener el comportamiento por defecto de block o de inline.  
+El comportamiento por defecto de grid es crear una columna, por lo que sus 
+hijos seran filas. Para crear columnas, puedo usar la propiedad 
+`grid-auto-flow: column;`.  
+
+**Propiedades container**  
+```css
+.container{
+	display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+	grid-auto-flow: row;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+  "header header header"
+  "main . sidebar"
+  "footer footer footer"
+  row-gap: 10px;
+  column-gap: 20px;
+  gap: 10px 20px;
+  gap: 10px;
+}
+```
+
+- Alinear el contenido horizontalmente: `justify-content: start`  
+- Alinear el contenido verticalmente: `align-content: end`  
+- Se puede simplificar con la propiedad: `place-content: posicionVertical posicionHorizontal`  
+  Si ambas posiciones son iguales, se puede simplificar con: `place-content: posicion`
+- Alinear los items horizontalmente: `justify-items: start`  
+  El valor por defecto es stretch y toma todo el ancho disponible para el elemento, 
+	si lo cambio, solo va a tomar el tamaño de su contenido  
+- Alinear los items verticalmente: `align-items: end`  
+  El valor por defecto es stretch y toma todo el alto disponible para el elemento, 
+	si lo cambio, solo va a tomar el tamaño de su contenido  
+- Se puede simplificar con la propiedad: `place-items: posicionVertical posicionHorizontal`  
+  Si ambas posiciones son iguales, se puede simplificar con: `place-items: posicion`
+
+
+**Propiedades items**  
+```css
+.item{
+	grid-column: 1 / 3;
+	grid-column: 1 / -1; // -1 es la ultima linea
+	grid-row: 1 / span 2;
+	grid-area: header;
+}
+```
+
+- Alinear el item horizontalmente: `justify-self: start`  
+  El valor por defecto es stretch y toma todo el ancho disponible para el elemento, 
+	si lo cambio, solo va a tomar el tamaño de su contenido.  
+- Alinear el item verticalmente: `align-self: end`  
+  El valor por defecto es stretch y toma todo el alto disponible para el elemento, 
+	si lo cambio, solo va a tomar el tamaño de su contenido.  
+- Se puede simplificar con la propiedad: `place-self: posicionVertical posicionHorizontal`  
+	Si ambas posiciones son iguales, se puede simplificar con: `place-self: posicion`  
+
+
+---
+
+## FLEX  
+
+Cuando defino el contenedor como flex, los hijos serán flex-items y dejarán
+de tener el comportamiento por defecto de block o de inline.  
+El comportamiento por defecto de flex es crear una fila, por lo que sus hijos  
+seran columnas.  
+
+Lo primero que hace flex, es poner el ancho de los elementos a su content size, 
+y de ser necesario se encogen para que quepan en la fila, porque por defecto 
+`flex-shrink: 1`. Lo que hace es que toma el espacio que hace falta para que quepan 
+todos los elementos en la fila y lo divide por igual para cada elemento, por lo que 
+si hay un elemento mas grande que el resto, va a seguir siendo mas grande.  
+Flexbox no tiene en cuenta el padding, margin o border de los elementos, solo mira 
+el content size.  
+
+`flex` es el diminutivo de las propiedades `flex-grow, flex-shrink y flex-basis` y sus  
+valores por defecto son 0 1 auto, respectivamente.
+Cuando se usa `flex: 1` los valores son 1 1 0, lo que hace que el elemento ponga su  
+`width: min-content` pero despues se expande hasta ocupar todo el espacio disponible.  
+`flex-basis: 100%` hace que el elemento tenga el tamaño de su content size, pero  
+se expande o encoge hasta ocupar todo el espacio disponible.  
+Cuando se usa `flex-grow: 1`, se toma todo el espacio disponible y se divide entre
+los elementos que tienen `flex-grow: 1`.  
+
+`flex-flow` es el diminutivo de las propiedades `flex-direction y flex-wrap` y sus 
+valores por defecto son row nowrap, respectivamente.  
+Una vez `flex-wrap: wrap` se activa (por defecto es nowrap) y el contenido es
+multilinea, la propiedad `align-content` funciona.  
+
+**Propiedades container**  
+```css
+.container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-content: flex-end;
+	justify-items: flex-start;
+	align-items: flex-end;
+  row-gap: 10px;
+  column-gap: 20px;
+  gap: 10px 20px;
+  gap: 10px;
+}
+```
+
+**Propiedades items**  
+```css
+.item{
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 100%;
+	flex: 1 1 100%;
+	order: 1;
+	justify-self: flex-start;
+	align-self: flex-end;
+}
+```
+
+
+---
+
+## SASS  
+
+Declarar variables al inicio del archivo: `$color-primary: red;`  
+Se usa: `color: $color-primary`  
+Si quiero usar las variables como selectores, se debe interpolar:
+```css
+	$selector: '.nav';
+	#{$selector}{
+  	color: red;
+	}
+```
+
+**Partials** definir un archivo sin que sea compilado, para después usarlos 
+en un archivo SASS que referencie a esos archivos, para definir un archivo 
+partial se pone un _ al inicio.  
+Para usar el partial en un archivo principal se usa: `@use 'nombrePartial';`. Sin poner el _  
+Para usar una variable del archivo partial se hace referencia al nombre del 
+partial y después el nombre de la variable: `color: nombrePartial.$nombreVariable`  
+
+Cuando se hace **nesting**, se usa el & para hacer referencia al elemento padre:  
+```css
+  a{
+    color: red;
+    &:hover{
+      color: blue;
+    }
+  }
+```
+
+**Ciclo for y condicional if**  
+```css
+  @for $iterador from 1 through 5{
+    .circle-#{$iterador}{
+      color: red;
+    }
+    @if $iterador == 5{
+      color: blue;
+    }
+  }
+```
+
+**Mixins** definen estilos que pueden ser reutilizados, pueden recibir parámetros 
+y un valor por defecto, para definirlo:  
+```css
+  @mixin alinear-contenido($justify: center){
+    display: flex;
+    align-items: center;
+    justify-content: $justify;
+  }
+```
+Usar el mixin:  
+`@include alinear-contenido(center)`  
+Si no recibe parámetros, no se pone paréntesis.  
+Para usar un mixin de un partial, se importa el partial y se usa:  
+`@include nombrePartial.nombreMixin`
+
+Las **funciones** son parecidas a los mixins pero los mixins se usan para estilos 
+y las funciones para otra lógica. Para definirla:  
+```css
+  @function pixels-rem($pixeles){
+    $rem: $pixeles * 2rem;
+    @return $rem;
+  }
+```
+Para usarla: `font-size: pixels-rem(10);`  
+
 
 ---
 
