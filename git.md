@@ -399,7 +399,7 @@ ramas y demas con tranquilidad
 
 - `git stash pop`  
   traer y aplicar los ultimos cambios que tenemos en el almacen temporal, 
-  ademas elimina ese ultimo stash que se trajo
+  ademas elimina ese ultimo stash que se trajo. El último stash es el 0.
 
 - `git stash apply`  
   traer y aplicar los ultimos cambios que tenemos en el almacen temporal, 

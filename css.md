@@ -12,7 +12,7 @@
   	padding: 0;
   }
 	html, body {
-		min-height: 100%;
+		min-height: 100vh;
 	}
 	img, picture, svg, video {
 		display: block;
@@ -28,8 +28,32 @@
   parrafos seguidos, creo 2 etiquetas "p"
 
 
-- A los elementos in-line no se les puede aplicar las propiedades de 
-  width y height
+- A los elementos in-line no se les puede aplicar las propiedades de width y height.  
+
+
+- Es recomendable usar un max-width y no width, porque permite flexibilidad
+  del elemento, con width el tamaño es fijo.  
+	En vez de poner un `width: 100%` y `max-width: 1280px`, puedo usar 
+  `width: min(100%, 1280px)`
+
+- es recomendable usar un min-height y no height, porque permite flexibilidad
+  del elemento, con height el tamaño es fijo.
+
+
+- El body por defecto toma el height de su hijo más alto, por eso cuando doy 
+  100% a su hijo no ocupa todo el alto de la pantalla, queda limitado por 
+	su padre (el body). El body toma esta altura porque los elementos en css por 
+	defecto tienen un height de auto, es decir, el alto de su contenido.  
+	
+	Para hacer que algo mida toda la pantalla debo usar viewport units, debería usarlas así:  
+  height: 100vh;  
+  height: 100dvh;  
+  Si el navegador soporta dvh lo tomará, sino, tomará vh, se hace así porque 
+	dvh arregla algunos problemas que vh genera en mobiles.  
+
+  Poner un min-height al padre y un height: 100% al hijo, el hijo va a tomar 
+	el tamaño por defecto del padre que es auto, porque no sabe cual es el height 
+	del padre, poner un min-height, no define explícitamente el height.  
 
 
 - `margin-block` y `margin-inline` son logical properties.   
@@ -37,8 +61,10 @@
 	`margin-inline` maneja left y right margin.
 
 
-- En vez de poner un `width: 100%` y `max-width: 1280px`, puedo usar  
-  `width: min(100%, 1280px)`
+- Se puede usar sticky en vez de fixed, porque fixed saca el elemento del 
+  flow y deja de contar el espacio, debo ajustar el resto de elementos 
+	para que se vea apropiadamente, con el sticky se mantiene el elemento 
+	en el flow y hace un efecto similar al fixed.  
 
 
 - se puede usar los pseudoelementos ::after y ::before para estilar en vez
@@ -101,7 +127,14 @@
 
 
 - Cuando se utilice border-radius, no usar el mismo para el elemento externo
-  y el interno, poner un poco mas pronunciado el redondeo del externo
+  y el interno, poner un poco mas pronunciado el redondeo del externo.  
+
+
+- La propiedad **@font-face** permite guardar las fuentes q vamos a usar en 
+  nuestro proyecto y no que estén proveidas desde terceros.  
+	Fuentes ttf (trueType font) son compatibles con navegadores más antiguos pero son más pesada.  
+	**fontsquirrel.com** un generador de fuentes web, subo las fuentes ttf y 
+	genera las fuentes woff y woff2 que son más ligeras (woff2 es mas ligera que woff).  
 
 
 - Poner una animacion al input cuando sea invalido:  
@@ -134,12 +167,6 @@
 ---
 
 ## Responsive
-
-- es recomendable usar un max-width y no width, porque permite flexibilidad
-  del elemento, con width el tamaño es fijo.
-
-- es recomendable usar un min-height y no height, porque permite flexibilidad
-  del elemento, con height el tamaño es fijo.
 
 
 - para los textos puedo poner un max-width en caracteres, por ej 70ch

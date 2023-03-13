@@ -635,6 +635,8 @@ Para buscar cualquier libreria con vanilla javascript:
 - [fontspace.com](https://www.fontspace.com/)
 - [fontsquirrel.com](https://www.fontsquirrel.com/)
 - [urbanfonts.com](https://www.urbanfonts.com/)
+- [fontsquirrel.com](https://www.fontsquirrel.com/tools/webfont-generator)  
+  Generador de fuentes web, subo la fuente en un formato y la convierte a otro.  
 
 ## Mockups:
 
