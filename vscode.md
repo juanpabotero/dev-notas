@@ -170,6 +170,9 @@
 - shift + click  
   para seleccionar desde donde esta el cursor hasta donde se hace click
 
+- shift + alt + o  
+  Organizar los imports  
+
 - ! y tab   
   en los ficheros .html para crear la estructura html
 
@@ -300,4 +303,6 @@
 - Code runner  
   para ejecutar codigo en varios lenguajes
 
+- live sass compiler de Glenn    
+  para compilar sass
 

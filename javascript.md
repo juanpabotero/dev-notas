@@ -313,7 +313,16 @@
   ```javascript
   const urlParams = new URLSearchParams(window.location.search)
   const id = urlParams.get('id')
-  ```
+  ```  
+
+- Agregar params a una url:
+  ```javascript
+  const url = new URL('https://example.com')
+  url.searchParams.set('name', 'Juan')
+  url.searchParams.set('age', 30)
+  console.log(url) // https://example.com/?name=Juan&age=30  
+  ```  
+
 
 - Recuperar los datos de un formulario en un objeto:
   ```javascript
@@ -361,6 +370,7 @@
   number.sort(() => Math.random() - 0.5)
   ```  
 
+
 - Crear un array de N posiciones  
   ```javascript
   const positions = 10;
@@ -375,13 +385,11 @@
   }
   ```
 
-- Agregar params a una url:
+
+- Generar un ID unico:  
   ```javascript
-  const url = new URL('https://example.com')
-  url.searchParams.set('name', 'Juan')
-  url.searchParams.set('age', 30)
-  console.log(url) // https://example.com/?name=Juan&age=30  
-  ```  
+  const id = window.crypto.randomUUID()
+  ```
 
 
 - Sacar el tamaño de un elemento en el DOM:

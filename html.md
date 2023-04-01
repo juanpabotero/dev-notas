@@ -54,14 +54,29 @@
   puedo ponerle el atributo `role="button"`
 
 
+- Poner el atributo `fetchpriority="high"` a un elmento le dice al navegador 
+  que tiene alta prioridad para que se haga su carga, esto se puede usar por ej 
+  en el LCP (Largest Contentful Paint) para que se cargue lo mas rapido posible.  
+
+
+- Poner alto y ancho a las imágenes como atributos de la etiqueta img, 
+  ayuda a que el navegador sepa el tamaño de la imagen antes de cargarla, 
+  y asi no se vea el efecto de carga de la imagen y no haya movimiento del  
+  layout. Despues se puede usar CSS para formatear mejor la imagen.  
+
+
+---
+
+
 ## Utilidades
 
 - Para cargar diferentes tamaños de imagenes:  
   ```html
-  <img  srcset="perro-480w.jpg 480w, perro-800w.jpg 800w"
-    sizes="(max-width: 600px) 480px, 800px"
-    src="perro-800w.jpg" 
-    alt="perro">
+  <img  src="perro-800w.jpg" 
+        srcset="perro-480w.jpg 480w, 
+                perro-800w.jpg 800w"
+        sizes="(max-width: 600px) 480px, 800px"
+        alt="perro">
   ```
   	otra forma:  
   ```html

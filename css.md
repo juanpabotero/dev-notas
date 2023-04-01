@@ -163,6 +163,14 @@
 	}
 	```  
 
+- Para invertir los colores de una página (pasar de modo claro a modo oscuro 
+  o viceversa) puedo seleccionar el HTML y agregarle el css:  
+	```css
+	html {
+		filter: invert(1);
+	}
+	```
+
 
 ---
 

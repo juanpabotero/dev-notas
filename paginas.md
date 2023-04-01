@@ -433,7 +433,10 @@ Para buscar cualquier libreria con vanilla javascript:
   [zod.dev](https://zod.dev/)  
 
 - Generar IDs:  
-  [uuid npm package](https://www.npmjs.com/package/uuid)
+  [uuid npm package](https://www.npmjs.com/package/uuid)  
+
+- Dropzone (subir archivos):
+  https://pqina.nl/filepond/?ref=pqina
 
 
 ## Otras utilidades JAVASCRIPT:
@@ -460,6 +463,7 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - Animaciones  
   [animate.style](https://animate.style/)   
+  [animatiss](https://xsgames.co/animatiss/)  
   [animxyz.com](https://animxyz.com/)  
   [keyframes.app/animate](https://keyframes.app/animate)  
   [sarthology.github.io/Animatopy/](https://sarthology.github.io/Animatopy/)  
@@ -834,6 +838,10 @@ Para buscar cualquier libreria con vanilla javascript:
 - [embed.im/snow](https://embed.im/snow/)  
   Poner efecto de nieve a la pagina
 
+- https://imagekit.io/
+  Subir y guardar imagenes y videos en la nube, se pueden optimizar y 
+  transformar para optimizarlas. Se puede poner el src de la imagen 
+  apuntando a este servicio para cargarla optimizada desde aqui.  
 
 ---
 

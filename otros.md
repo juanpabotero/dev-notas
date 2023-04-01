@@ -287,7 +287,8 @@ Dentro del **package.json** pongo:
 	"extends": "standard"
 }
 ```  
-Para un proyecto en el que use React debo poner, no lo de arriba:  
+Para un proyecto en el que use React debo poner, no lo de arriba, 
+si no esto:  
 ```json
 "eslintConfig": {
 	"extends": "./node_modules/standard/eslintrc.json"
@@ -298,6 +299,18 @@ Para instalar eslint en un proyecto que use TypeScript seria mejor
 hacerlo asi:  
 `npx eslint --init`  
 
+1. Seleccionar, To check syntax, find problems, and enforce code style
+2. Seleccionar, JavaScript modules (import/export)
+3. Seleccionar, React
+4. Seleccionar, Yes
+5. Seleccionar, Browser
+6. Seleccionar, Use a popular style guide
+7. Seleccionar, Standard
+8. Seleccionar, JavaScript
+9. Seleccionar, Yes
+10. Seleccionar, npm
+
+El resumen de las preguntas que se hacen quedaria asi:  
 How would you like to use ESLint? · style
 What type of modules does your project use? · esm
 Which framework does your project use? · react
@@ -309,7 +322,17 @@ What format do you want your config file to be in? · JavaScript
 Would you like to install them now? · Yes
 Which package manager do you want to use? · npm
 
-en el archivo .eslintrc.cjs, en "parserOptions", agregar: `"project": "./tsconfig.json"` 
+En el archivo `.eslintrc.cjs`, en `"parserOptions"`, agregar: `"project": "./tsconfig.json"` 
+para que vea el archivo que tiene la configuracion de TypeScript.  
+
+Si deseo desactivar alguna regla de Eslint, en el archivo `.eslintrc.cjs`, 
+en `"rules"` (es un objeto), agregar la regla que quiero desactivar, por ejemplo: 
+`"@typescript-eslint/explicit-function-return-type": "off"`.  
+
+Como tip es que si quiero desactivar alguna regla, en el editor puedo pararme 
+encima del error y darle la opción de desactivar la regla, copio el texto que 
+está despues de *eslint-disable-next-line* y lo pego en el archivo `.eslintrc.cjs`, 
+en `"rules"` y le agregó el valor `"off"`.  
 
 ### Prettier:  
 

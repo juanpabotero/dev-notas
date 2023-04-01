@@ -88,12 +88,27 @@ Extensiones de VSCode:
 - Iconos:  
   [react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons/)  
 
+- Animaciones:   
+  https://react.useanimations.com/  
+  https://react-spring.io  
+
+- Notificaciones:  
+  https://react-hot-toast.com/  
+  https://sonner.emilkowal.ski/
+
+- Calendario:  
+  https://react-day-picker.js.org/  
+
 - Debounce:  
   [use-debounce](https://www.npmjs.com/package/use-debounce)  
   [github.com/angus-c/just#just-debounce-it](https://github.com/angus-c/just#just-debounce-it)  
 
 - Dropzone (subir archivos arrastrando y soltando):  
   [react-dropzone.js.org](https://react-dropzone.js.org)  
+  https://pqina.nl/filepond/?ref=pqina
+
+- Renderizar PDFs:  
+  https://react-pdf.org/
 
 
 ## Hosting  
@@ -779,6 +794,18 @@ Seria ideal para relacionar un label con un input, el label llevaria el atributo
   // llamada a la funcion
   someFunction({ param1, param2, param3 })
   ```  
+
+- No usar las defaultProps, porque si se quiere pasar un valor por defecto  
+  a una prop, se puede hacer directamente en la definición de la función,  
+  ej:  
+  ```js
+  function GifGrid({ category = "One Punch" }) {
+    // ...
+  }
+  ```  
+
+- No es necesario importar React en los archivos .jsx, porque se hace  
+  automáticamente.
 
 - Si se tienen muchos componentes dentro de una carpeta, se puede crear un  
   archivo index.js dentro de esta misma carpeta y exportar todos los componentes  
