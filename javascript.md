@@ -109,6 +109,11 @@
 - formatear numeros con `intl.numberFormat()`
 
 
+- La igualdad no estricta (==) se puede utilizar para comparar si un valor es 
+  null o undefined. Ej, `if (variable == null) { ... }`, esto es equivalente a
+  `if (variable === null || variable === undefined) { ... }`.  
+
+
 - **Operadores**:
   - falsy: null, undefined, false, '', 0, NaN
   - ?? operador nullish, compara el valor con un valor null o undefined.

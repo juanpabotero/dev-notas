@@ -524,123 +524,126 @@
 
 ## Buenas practicas  
 
-- Usar `trackBy` en el `*ngFor`, que me permite renderizar solo los elementos
-  nuevos o que hayan cambiado, y no todos los elementos.  
-  en el archihvo HTML:  
-  ```html
-  <div *ngFor="let item of items; trackBy: trackByFn">
-  	{{item.id}} - {{item.name}}
-  </div>
-  ```
-  en el archivo TS:  
-  ```typescript
-  trackByFn(index: number, item: any) {
-  	return index; // or item.id for objects
+### Usar `trackBy` en el `*ngFor`  
+
+Me permite renderizar solo los elementos nuevos o que hayan cambiado, 
+y no todos los elementos.  
+En el archihvo HTML:  
+```html
+<div *ngFor="let item of items; trackBy: trackByFn">
+	{{item.id}} - {{item.name}}
+</div>
+```
+en el archivo TS:  
+```typescript
+trackByFn(index: number, item: any) {
+	return index; // or item.id for objects
+}
+ ```
+En la funcion debo devolver un identificador unico para que pueda
+reconocer el nuevo elemento o el que cambió.
+
+### Desuscribirse de los observables  
+
+Siempre que usemos el metodo `subscribe` deberiamos usar el metodo `unsubscribe`, 
+normalmente en el `ngOnDestroy()`, ej:  
+```typescript
+  data$: Observable<any> = this.usersService.getData();
+  dataSubscription: Subscription | undefined;
+  ngOnInit(): void {
+    this.dataSubscription = this.data$.subscribe((data) => {
+      console.log(data);
+    });
   }
-   ```
-  En la funcion debo devolver un identificador unico para que pueda
-	reconocer el nuevo elemento o el que cambió.
-
-
-- Siempre que usemos el metodo `subscribe` deberiamos usar el metodo `unsubscribe`,  
-  normalmente en el `ngOnDestroy()`, ej:  
-  ```typescript
-    data$: Observable<any> = this.usersService.getData();
-    dataSubscription: Subscription | undefined;
-
-    ngOnInit(): void {
-      this.dataSubscription = this.data$.subscribe((data) => {
-        console.log(data);
-      });
-    }
-
-    ngOnDestroy(): void {
-      this.dataSubscription?.unsubscribe();
-    }
-  ```  
-  Otra forma seria usando el *takeUntil*, seria la manera recomendada ya que  
-  nos permite desuscribirnos de varios observables cuando se destruye el  
-  componente, ej:  
-  ```typescript
-    data$: Observable<any> = this.usersService.getData();
-    users$: Observable<any> = this.usersService.getUsers();
-    unsubscribe$ = new Subject<void>();
-
-    ngOnInit(): void {
-      this.data$.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
-        console.log(data);
-      });
-      this.users$.pipe(takeUntil(this.unsubscribe$)).subscribe((users) => {
-        console.log(users);
-      });
-    }
-
-    ngOnDestroy(): void {
-      this.unsubscribe$.next();
-      this.unsubscribe$.complete();
-    }
-  ```  
-  Podria crear una clase para manejar las desuscripciones.  
-  [Ver aquí](https://www.youtube.com/watch?v=wDAmfqnIrck&t=1s)    
-
-
-- Usar el pipe async porq permite suscribirse a un observable o promesa y retorna el  
-  ultimo valor que ha emitido, usa el valor del resultado en el template, ademas,  
-  permite desuscribirse automaticamente del observable cuando se destruye el componente.  
-  La desventaja es que es un poco mas complejo hacer los tests. Ej:  
-	En el template:  
-	```html
-  <div *ngFor="let user of users$ | async">
-    <div>Name: {{ user.name }}</div>
-    <div>Username: {{ user.username }}</div>
-  </div>
-  ```
-	En el archivo TS:  
-  ```typescript
-  users$: Observable<string[]>;
-  constructor( private usersService: UsersService ) {
-  	this.users$ = this.usersService.getUsers();
+  ngOnDestroy(): void {
+    this.dataSubscription?.unsubscribe();
   }
-  ```
-  otro ejemplo:  
-  ```html
-  <ng-container *ngIf="user$ | async as user; else loading">
-    {{ user.name }} {{ user.lastName }} 
-  </ng-container>
-  <ng-template #loading>
-    Loading...
-  </ng-template>
-  ```
+```  
 
-- Conocer el ciclo de deteccion de cambios de Angular.  
-  Para algunos componentes podria usar `onPush`, en vez del default.  
-  Para cambiarlo voy al componente y en el decorador `@Component()`, agrego
-  la propiedad:  
-  `changeDetection: ChangeDetectionStrategy.OnPush`  
+Otra forma seria usando el *takeUntil*, seria la manera recomendada ya que nos 
+permite desuscribirnos de varios observables cuando se destruye el componente, ej:  
+```typescript
+  data$: Observable<any> = this.usersService.getData();
+  users$: Observable<any> = this.usersService.getUsers();
+  unsubscribe$ = new Subject<void>();
+  ngOnInit(): void {
+    this.data$.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
+      console.log(data);
+    });
+    this.users$.pipe(takeUntil(this.unsubscribe$)).subscribe((users) => {
+      console.log(users);
+    });
+  }
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+```  
 
+Podria crear una clase para manejar las desuscripciones.  
+[Ver aquí](https://www.youtube.com/watch?v=wDAmfqnIrck&t=1s)    
 
-- Cambiar el src de las imágenes por el ngSrc desde Angular 15 para optimización  
-  de imágenes y lazy load por defecto.  
-  Recomendado poner el ancho y el alto para que deje el espacio para la imagen y  
-  no dé saltos la página.
-  ```html
-  <img [ngSrc]="product.image" width="640" height="480">
-  ```  
+### Usar el pipe async  
 
-- Usar los archivos environment para declarar las variables en ambiente
-  de desarrollo y de produccion, angular hara el cambio por mi cuando
-  se haga el build de produccion.
+Usar el pipe async porq permite suscribirse a un observable o promesa y retorna el 
+ultimo valor que ha emitido, usa el valor del resultado en el template, ademas, 
+permite desuscribirse automaticamente del observable cuando se destruye el componente.  
+La desventaja es que es un poco mas complejo hacer los tests. Ej:  
+En el template:  
+```html
+<div *ngFor="let user of users$ | async">
+  <div>Name: {{ user.name }}</div>
+  <div>Username: {{ user.username }}</div>
+</div>
+```
+En el archivo TS:  
+```typescript
+users$: Observable<string[]>;
+constructor( private usersService: UsersService ) {
+	this.users$ = this.usersService.getUsers();
+}
+```
+otro ejemplo:  
+```html
+<ng-container *ngIf="user$ | async as user; else loading">
+  {{ user.name }} {{ user.lastName }} 
+</ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>
+```
 
+### Conocer el ciclo de deteccion de cambios de Angular  
 
-- Para la optimizacion de angular puedo hacer:
-	- Lazy loading
-	- Optimizacion de imagenes
-	- Minizar bundles
-	- Production mode
-	- Strict mode
+Para algunos componentes podria usar `onPush`, en vez del default.  
+Para cambiarlo voy al componente y en el decorador `@Component()`, agrego
+la propiedad:  
+`changeDetection: ChangeDetectionStrategy.OnPush`  
 
+### Usar `ngSrc` en las imágenes  
 
-- Usar el cdk de angular para distintas funcionalidades o componentes.
+Cambiar el src de las imágenes por el ngSrc desde Angular 15 para optimización 
+de imágenes y lazy load por defecto.  
+Recomendado poner el ancho y el alto para que deje el espacio para la imagen y 
+no dé saltos la página.
+```html
+<img [ngSrc]="product.image" width="640" height="480">
+```  
+
+### Usar los archivos environment  
+
+Para declarar las variables en ambiente de desarrollo y de produccion, 
+Angular hara el cambio por mi cuando se haga el build de produccion.
+
+### Para la optimizacion de angular puedo hacer:
+
+- Lazy loading
+- Optimizacion de imagenes
+- Minizar bundles
+- Production mode
+- Strict mode
+
+Usar el cdk de angular para distintas funcionalidades o componentes.
 
 
 ---
@@ -720,6 +723,65 @@ eventos y suscribirse a ellos, para escuchar cuando se emitan los datos
 y ejecutar algo.  
 Los operadores RxJS nos permiten transformar los datos que se emiten y  
 trabajan sobre el flujo de datos, no con el valor final emitido.
+
+### Operadores rxjs
+
+Se deben utilizar bajo el operador pipe.
+Se trabajan sobre el observable.
+
+- **map** funciona similar al map de JS, para transformar la información.
+
+- **filter** funciona similar al filter de JS, para filtrar la información.
+
+- **tap** dispara un efecto secundario, pero devuelve el mismo valor del observable, 
+  es decir, no lo modifica.
+
+- **delay**, permite hacer un retardo del observable.
+
+- **merge**, agrupa el resultado de 2 o más observables, independiente de 
+  cual observable termine primero y ese será el orden del resultado.
+
+- **concat**, agrupa el resultado de 2 o más observables, esperando que 
+  el primer observable se complete, para continuar con el segundo y así 
+  sucesivamente y ese será el orden del resultado.
+
+- **switchMap**, permite cambiar a un nuevo observable cada vez que se 
+  emite un valor de un observable, se puede usar el valor del observable 
+  dentro del switchMap y así tenerlo disponible para el nuevo observable.
+
+- **takeUntil**, permite tomar un número específico de valores emitidos 
+  por un observable, o tomar valores hasta que se emita un valor específico 
+  de otro observable. Es útil para cancelar una suscripción a un observable 
+  cuando ocurre un evento específico.
+
+- **single**, permite tomar un solo valor que cumpla una condición y 
+  luego completa el observable. Es útil para recuperar un solo valor o 
+  para detectar un valor específico en un flujo de datos.Emite un error 
+  si no se cumple la condición.
+
+- **startWith**, permite emitir un valor o conjunto de valores antes que 
+  se empiecen a emitir los valores del observable. Es útil para establecer 
+  un valor inicial o proporcionar un contexto para los valores emitidos posteriormente.
+
+- **fromEvent**, permite crear un observable a partir de un evento de un 
+  elemento del DOM. Util para transformar los eventos en un flujo de datos observable.
+
+- **combineLatest** (está deprecado y en la versión 8 de rxjs será sustituido 
+  por combineLatestWith), combina el último valor de cada observable en un único valor.
+
+- **concatWith**, permite concatenar 2 o más observables, devuelve un 
+  nuevo observable de manera secuencial, es decir, espera a que el 
+  observable anterior se complete antes de empezar a emitir los valores 
+  del siguiente observable.
+
+- **share**, para cachear los datos del observable.  
+  [Ver aqui](https://www.youtube.com/watch?v=uBaec1OcsZI&list=PL_9MDdjVuFjEscTzZSLo6upnX1AbHj-dl&index=25)
+  
+- **Subject** es un observable y un observer porq permite suscribirse 
+  a él y también permite emitir valores a través del método next.
+
+- **BehaviorSubject** a diferencia del subject normal, éste siempre tiene 
+  un valor inicial.
 
 
 ## Eslint y prettier:  

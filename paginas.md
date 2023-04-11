@@ -689,6 +689,9 @@ Para buscar cualquier libreria con vanilla javascript:
 - Atajos para los programas de diseño  
   [shortcuts.design](https://shortcuts.design/)  
 
+- Tips de diseño UI  
+  https://www.adhamdannaway.com/blog/ui-design/16-ui-design-rules
+
 
 ---
 
@@ -842,6 +845,9 @@ Para buscar cualquier libreria con vanilla javascript:
   Subir y guardar imagenes y videos en la nube, se pueden optimizar y 
   transformar para optimizarlas. Se puede poner el src de la imagen 
   apuntando a este servicio para cargarla optimizada desde aqui.  
+
+- https://www.patterns.dev/  
+  Patrones de diseño en Javascript.  
 
 ---
 

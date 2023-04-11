@@ -14,52 +14,52 @@ Extensiones de VSCode:
 
 ## Librerías
 
-- Crear proyecto  
+- **Crear proyecto**  
   Client Side: Vite  
   SSR: Next.js  
   Static: Astro  
 
-- Package Manager  
+- **Package Manager**  
   Por defecto: npm  
   Por cambiar o por probar: pnpm  
 
-- State Management  
+- **State Management**  
   Cosas estáticas o que cambian poco: React Context  
   Para estado global general: Zustand  
   Redux Toolkit SÓLO para proyectos medio/grandecitos con estados globales complejos  
   Para proyectos GRANDES, evitar el estado global y depender de React Query, Apollo, Flux...  
 
-- Data Fetching  
+- **Data Fetching**  
   https://tanstack.com/query/latest  
   urlQL  
 
-- Routing  
+- **Routing**  
   NextJS File System Routing  
   React Router (para proyectos con paths complejos o muchas páginass)  
   Wouter (smaller alternative, páginas sencillas)  
 
-- CSS Styling  
+- **CSS Styling**  
   TailwindCSS  
   CSS Modules  
   Vanilla Extract  
 
-- React UI Libraries  
+- **React UI Libraries**  
   Framer Motion  
   Auto Animate  
 
-- Charts  
+- **Charts**  
   Recharts  
 
-- Forms  
+- **Forms**  
   https://react-hook-form.com/  
   zod (para validaciones)  
 
-- Autenticación  
+- **Autenticación**  
   Supabase Auth  
   Next Auth  
   O probar Lucia Auth/Authjs.dev  
 
-- Hosting  
+- **Hosting**  
 
   Proyectos web:  
   Vercel  
@@ -73,41 +73,43 @@ Extensiones de VSCode:
   Fly.io  
   Render  
 
-- Testing  
+- **Testing**  
   Vitest + Playwright + React Testing Library  
 
-- Time in React  
+- **Time in React**  
   Menos momentjs lo que quieras.  
   date-fns  
   dayjs  
   luxon  
 
-- Componentes:  
-  [mui.com](https://mui.com/)  
+- **Componentes**  
+  https://mui.com/  
+  https://react-bootstrap.github.io/  
+  https://www.tremor.so/  
 
-- Iconos:  
-  [react-icons.github.io/react-icons/](https://react-icons.github.io/react-icons/)  
+- **Iconos**  
+  https://react-icons.github.io/react-icons/  
 
-- Animaciones:   
+- **Animaciones**  
   https://react.useanimations.com/  
   https://react-spring.io  
 
-- Notificaciones:  
+- **Notificaciones**  
   https://react-hot-toast.com/  
   https://sonner.emilkowal.ski/
 
-- Calendario:  
+- **Calendario**  
   https://react-day-picker.js.org/  
 
-- Debounce:  
-  [use-debounce](https://www.npmjs.com/package/use-debounce)  
-  [github.com/angus-c/just#just-debounce-it](https://github.com/angus-c/just#just-debounce-it)  
+- **Debounce**  
+  https://www.npmjs.com/package/use-debounce  
+  https://github.com/angus-c/just#just-debounce-it  
 
-- Dropzone (subir archivos arrastrando y soltando):  
-  [react-dropzone.js.org](https://react-dropzone.js.org)  
+- **Dropzone (subir archivos arrastrando y soltando)**  
+  https://react-dropzone.js.org  
   https://pqina.nl/filepond/?ref=pqina
 
-- Renderizar PDFs:  
+- **Renderizar PDFs**  
   https://react-pdf.org/
 
 
@@ -560,7 +562,7 @@ Se recomienda usar el *useEffect* hasta donde sea posible.
 
 ### useRef
 
-mala: crear referencia a un elemento del dom
+Definición mala: crear referencia a un elemento del dom
 
 Permite crear una referencia mutable que persiste durante todo el ciclo de vida del  
 componente, es util para guardar cualquier valor que se quiera mutar y cada vez que  

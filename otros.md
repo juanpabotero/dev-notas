@@ -174,7 +174,20 @@ y ejecutar algo
 
 ### Redux: 
 
-Manejador de estados globales
+Manejador de estados globales.  
+Para intalar Redux, se recomienda hacerlo con Redux Toolkit. 
+Para instalar Redux Toolkit: `npm install @reduxjs/toolkit`. 
+Si se usa React en el proyecto, tambien se debe instalar React Redux: 
+`npm install react-redux`.  
+
+Debemos envolver la aplicacion con un provider para poder leer 
+el estado desde cualquier componente
+<Provider store={store}>
+  <App />
+</Provider>
+
+Ver en **curso-react-midudev/projects/09-crud-redux**  
+
 
 ### Jest: 
 
@@ -384,6 +397,13 @@ se resfactoriza con la seguridad de que ya tengo un test que me cubre.
 Si escribo un test y pasa inmediatemente, puedo evaluarlo y ver si me está 
 aportando o si ya hay otro test que lo cubre.  
 Puedo ir quitando los test redundantes.
+
+
+---
+
+## Utilidades  
+
+- `npx npkill`: para eliminar todos los node_modules del PC.  
 
 
 ---
