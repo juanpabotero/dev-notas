@@ -324,16 +324,16 @@ hacerlo asi:
 10. Seleccionar, npm
 
 El resumen de las preguntas que se hacen quedaria asi:  
-How would you like to use ESLint? · style
-What type of modules does your project use? · esm
-Which framework does your project use? · react
-Does your project use TypeScript? » Yes
-Where does your code run? · browser
-How would you like to define a style for your project? · popular guide
-Which style guide do you want to follow? · standard-with-typescript
-What format do you want your config file to be in? · JavaScript
-Would you like to install them now? · Yes
-Which package manager do you want to use? · npm
+How would you like to use ESLint? · style  
+What type of modules does your project use? · esm  
+Which framework does your project use? · react  
+Does your project use TypeScript? » Yes  
+Where does your code run? · browser  
+How would you like to define a style for your project? · popular guide  
+Which style guide do you want to follow? · standard-with-typescript  
+What format do you want your config file to be in? · JavaScript  
+Would you like to install them now? · Yes  
+Which package manager do you want to use? · npm  
 
 En el archivo `.eslintrc.cjs`, en `"parserOptions"`, agregar: `"project": "./tsconfig.json"` 
 para que vea el archivo que tiene la configuracion de TypeScript.  

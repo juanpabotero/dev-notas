@@ -1,4 +1,3 @@
-
 # REACT  
 
 ## Herramientas  
@@ -28,6 +27,11 @@ Extensiones de VSCode:
   Para estado global general: Zustand  
   Redux Toolkit SÓLO para proyectos medio/grandecitos con estados globales complejos  
   Para proyectos GRANDES, evitar el estado global y depender de React Query, Apollo, Flux...  
+
+  - Tanstack Query (React Query): Es una libreria para manejar estados asincronos.  
+    Permite también hacer fetching de datos.  
+    Para instalar: `npm install @tanstack/react-query`  
+    (ver curso-react-midudev/10b-prueba-tecnica-typescript-react-query)  
 
 - **Data Fetching**  
   https://tanstack.com/query/latest  

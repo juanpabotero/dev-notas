@@ -64,9 +64,38 @@
   y asi no se vea el efecto de carga de la imagen y no haya movimiento del  
   layout. Despues se puede usar CSS para formatear mejor la imagen.  
 
-
 ---
 
+## Semantica  
+
+- main: Contenido principal de una página web. Es recomndable utilizarlo una 
+  sola vez por página.
+
+- section: Agrupa contenido relacionado en una sección lógica. Es especialmente 
+  útil para estructurar el contenido de un artículo o de una página web.  
+
+- article: Una pieza de contenido independiente en una página web, como un artículo 
+  o un elemento con información propia.  
+
+- header: Representa la cabecera de una sección o de una página web. Puede contener 
+  elementos como el título, el logo, el menú de navegación, etc.  
+
+- footer: Representa el pie de una sección o de una página web. Puede contener 
+  información como el autor, enlaces relacionados, derechos de autor, etc.  
+
+- nav: Menú de navegación de una página web. Puede contener enlaces a otras 
+  secciones de la página o a páginas externas.  
+
+- aside: Contenido relacionado pero que no forma parte del flujo principal de la 
+  página web. Puede contener enlaces relacionados, anuncios, etc.  
+
+- figure: Representa una figura, imagen, gráfica en una página web, con una 
+  descripción opcional utilizando la etiqueta figcaption.  
+
+- fieldset: Agrupa elementos de un formulario relacionados en un conjunto 
+  visualmente coherente.  
+
+---
 
 ## Utilidades
 

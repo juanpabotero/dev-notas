@@ -13,6 +13,77 @@
   [overapi.com](https://overapi.com/)  
 
 
+---
+
+## Hosting:
+
+- **Github pages**  
+  Hosting gratuito para paginas web estaticas (HTML, CSS y JS)   
+	La carpeta que debo subir al repositorio es la carpeta docs con mis
+  archivos de produccion adentro y esta es la que usa Github pages.  
+	Entro al repositorio y doy en settings, pages, en sources 
+  selecciono la rama main, la carpeta que subí y doy en save. espero 
+  que este lista la pagina. si realizo algun cambio puede tardar 
+  varios minutos en verse reflejados.  
+
+  - **Github Pages con Vite**:  
+    En el archivo `vite.config.js` configuro la base de la pagina y la carpeta de salida 
+    cuando se hace el build si asi lo deseo:    
+    ```js
+    export default defineConfig({
+      base: '/nombre-repositorio/',
+      build: {
+        outDir: 'docs'
+      }
+    })
+    ```  
+    Otra forma puede ser:  
+    - Puedo instalar: `npm install gh-pages --save-dev`  
+    - Agregar en el package.json: 
+      ```json
+      "scripts": {
+        "deploy": "gh-pages -d dist"
+      }
+      ```  
+    - Seguir los pasos de la documentación.  
+      [vitejs.dev/guide/static-deploy.html](https://vitejs.dev/guide/static-deploy.html)  
+    - [Ver video](https://www.youtube.com/watch?v=rLoWMU4L_qE&list=WL&index=12&t=17005s)  
+  
+
+	- **Failed to load resource: the server responded with a status of 404**  
+    si tengo el error anterior debo poner lo siguiente en el index.html de produccion:  
+    `<base href="/nombre-repositorio/">`  
+    O revisar si solo se debe agregar `./` para los links que estan en el index.html de produccion.  
+    O ambas cosas.  
+    
+
+- **Netlify**  
+  Hosting gratuito para paginas web estaticas (HTML, CSS y JS)  
+  Simplemente subo la carpeta de produccion que genere
+	- error: Si me encuentro con el problema de Page Not Found en mi sitio 
+		web, debo agregar el archivo netlify.toml a la carpeta que voy a 
+		subir a produccion, éste lo encuentro en la carpeta de Angular
+
+
+- **vercel.com (gratis)** =>  paginas estaticas (HTML, CSS, JS)
+- **surge.sh (gratis)** =>  paginas estaticas (HTML, CSS, JS)
+- **digitalocean.com** =>  gratis par paginas estaticas y tiene plan de pago 
+  para aplicaciones con backend
+- **railway.app (gratis)** =>  aplicaciones con backend 
+- **render.com (gratis)** =>  aplicaciones con backend 
+- **fly.io (gratis)** =>  aplicaciones con backend 
+- **heroku.com (de pago)** =>  aplicaciones con backend 
+- **dev.new (gratis)** =>  despliegue de aplicaciones y bases de datos
+- **workers.cloudflare.com (cloudflare pages) (gratis)**
+- **Gitlab Pages**
+- **Firebase**
+- **AWS (es gratis para estudiantes)**
+- **Google Cloud**
+- **Microsoft Azure**
+
+
+---
+
 ## API:
 
 - API de la NASA  
@@ -80,60 +151,6 @@
 - API para musica  
   [developer.spotify.com/documentation/web-api/](https://developer.spotify.com/documentation/web-api/)   
 
-
-## Hosting:
-
-- **Github pages**  
-  Hosting gratuito para paginas web estaticas (HTML, CSS y JS)   
-	La carpeta que debo subir al repositorio es la carpeta docs con mis
-  archivos de produccion adentro y esta es la que usa Github pages.  
-	Entro al repositorio y doy en settings, pages, en sources 
-  selecciono la rama main, la carpeta que subí y doy en save. espero 
-  que este lista la pagina. si realizo algun cambio puede tardar 
-  varios minutos en verse reflejados.  
-
-	- **Failed to load resource: the server responded with a status of 404**  
-    si tengo el error anterior debo poner lo siguiente en el index.html de produccion:  
-    `<base href="/nombre-repositorio/">`  
-    O revisar si solo se debe agregar `./` para los links que estan en el index.html de produccion.  
-    O ambas cosas.  
-
-    - **Github Pages con Vite**:  
-      - Puedo instalar: `npm install gh-pages --save-dev`  
-      - Agregar en el package.json: 
-        ```json
-        "scripts": {
-          "deploy": "gh-pages -d dist"
-        }
-        ```  
-      - Seguir los pasos de la documentación.  
-        [vitejs.dev/guide/static-deploy.html](https://vitejs.dev/guide/static-deploy.html)  
-      - [Ver video](https://www.youtube.com/watch?v=rLoWMU4L_qE&list=WL&index=12&t=17005s)  
-
-
-- **Netlify**  
-  Hosting gratuito para paginas web estaticas (HTML, CSS y JS)  
-  Simplemente subo la carpeta de produccion que genere
-	- error: Si me encuentro con el problema de Page Not Found en mi sitio 
-		web, debo agregar el archivo netlify.toml a la carpeta que voy a 
-		subir a produccion, éste lo encuentro en la carpeta de Angular
-
-
-- **vercel.com (gratis)** =>  paginas estaticas (HTML, CSS, JS)
-- **surge.sh (gratis)** =>  paginas estaticas (HTML, CSS, JS)
-- **digitalocean.com** =>  gratis par paginas estaticas y tiene plan de pago 
-  para aplicaciones con backend
-- **railway.app (gratis)** =>  aplicaciones con backend 
-- **render.com (gratis)** =>  aplicaciones con backend 
-- **fly.io (gratis)** =>  aplicaciones con backend 
-- **heroku.com (de pago)** =>  aplicaciones con backend 
-- **dev.new (gratis)** =>  despliegue de aplicaciones y bases de datos
-- **workers.cloudflare.com (cloudflare pages) (gratis)**
-- **Gitlab Pages**
-- **Firebase**
-- **AWS (es gratis para estudiantes)**
-- **Google Cloud**
-- **Microsoft Azure**
 
 
 ## Páginas frontend:
@@ -519,6 +536,9 @@ Para buscar cualquier libreria con vanilla javascript:
   [joshwcomeau.com/shadow-palette ](https://www.joshwcomeau.com/shadow-palette/)  
   [shadows.brumm.af](https://shadows.brumm.af/)  
 
+- Transiciones CSS  
+  https://www.transition.style/
+
 - [neumorphism.io](https://neumorphism.io/#e0e0e0)  
   
 - Diferentes utilidades  
@@ -668,6 +688,12 @@ Para buscar cualquier libreria con vanilla javascript:
   se pega el svg y en la parte de abajo a la derecha se copia el código HTML del svg.
 
 ## Otras utilidades:
+
+- Iconos, ilustraciones, herramientas, diseños  
+  https://uigoodies.com/
+
+- Colección de recursos  
+  https://www.toools.design/
 
 - Imagenes para fondos  
   [app.haikei.app](https://app.haikei.app/)  
@@ -848,6 +874,13 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - https://www.patterns.dev/  
   Patrones de diseño en Javascript.  
+
+- https://jsonbin.io/
+  Puedes tener una API  y el archivo json como base de datos  
+
+- https://mui.com/
+  Componentes basados en el diseño de material
+
 
 ---
 

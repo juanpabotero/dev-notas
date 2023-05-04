@@ -67,9 +67,8 @@
   Los nuevo metodos son puros, son inmutables, no mutan el array original.
   - toReversed()
   - toSorted()
-  - toSpliced(): devuelve un nuevo array con las modificaciones, no el elemento
-	   eliminado como lo hace .splice()
-  - .with(): reemplaza un elemento del array  
+  - toSpliced(): devuelve un nuevo array con las modificaciones, no el elemento eliminado como lo hace splice()
+  - with(): reemplaza un elemento del array  
 
 - el metodo .sort() modifica el array original y convierte los numeros en string
   para ordenarlos, por eso si se quiere ordenar numeros se deben pasar los parametros 
@@ -298,6 +297,24 @@
   ```js
   import { useCounter, useFetch, useForm } from "./hooks";
   ```  
+
+
+- La mejor forma de comparar strings es usando el metodo `localeCompare`, 
+  compara dependiendo del idioma, tiene en cuenta asentos y demás, ej:
+  ```js
+  const str1 = 'Hola'
+  const str2 = 'hola'
+  str1.localeCompare(str2) // -1
+  str2.localeCompare(str1) // 1
+  str1.localeCompare(str1) // 0
+  ```
+  Para ordenar strings se puede usar el metodo `sort` de los arrays, 
+  tener en cuenta que modifica el array original, ej:
+  ```js
+  const arr = ['Hola', 'hola', 'adios', 'Adios']
+  arr.sort((a, b) => a.localeCompare(b)) // ['Adios', 'adios', 'Hola', 'hola']
+  const newArr = [...arr].sort((a, b) => a.localeCompare(b)) // para un nuevo array
+  ```
 
 
 ---
